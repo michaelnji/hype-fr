@@ -61,14 +61,14 @@ app.get("/welcome/blog/:id", (request, response) => {
 // // serve assets, if they exist
 // app.use(express.static("public"));
 
-// otherwise serve Routify
-app.get("*", async (req, res) => {
-  res.sendFile(TEMPLATE, { root: __dirname });
-});
+// // otherwise serve Routify
+// app.get("*", async (req, res) => {
+//   res.sendFile(TEMPLATE, { root: __dirname });
+// });
 
-// start server
-app.listen(PORT);
-// console.log("serving on port", PORT);
+// // start server
+// app.listen(PORT);
+// // console.log("serving on port", PORT);
 
 // Export the Express API
 module.exports = app;
