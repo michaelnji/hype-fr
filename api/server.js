@@ -32,7 +32,7 @@ app.get("/api/blog", (req, res) => {
         success: false,
         data: undefined,
       });
-      console.log("Error occurred while retrieving entries: ", error);
+      console.log("Error occurred : ", error);
     });
 });
 
