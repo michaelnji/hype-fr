@@ -17,7 +17,7 @@ var client = contentful.createClient({
 // contentful blog posts
 
 // sends all blog posts to the client
-app.get("/api/blog", (req, res) => {
+app.get("/welcome/blog", (req, res) => {
   var blogPosts;
   client
     .getEntries()
@@ -38,7 +38,7 @@ app.get("/api/blog", (req, res) => {
 
 // gets a particular blog post
 
-app.get("/api/blog/:id", (request, response) => {
+app.get("/welcome/blog/:id", (request, response) => {
   let post;
   client
     .getEntry(request.params.id)
