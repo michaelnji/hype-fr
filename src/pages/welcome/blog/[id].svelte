@@ -13,7 +13,7 @@
   let currentTheme, subscribe, d;
   onMount(() => {
     theme.update((value) => {
-      return db.getItemValue("App-theme", "light");
+      return db.getItemValue("App-theme");
     });
     subscribe = theme.subscribe((value) => {
       currentTheme = value;
