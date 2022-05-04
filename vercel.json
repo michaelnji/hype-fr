@@ -13,8 +13,7 @@
     },
     {
       "src": "api/index.js",
-      "use": "@vercel/node",
-      "includeFiles": "public/**"
+      "use": "@vercel/node"
     }
   ],
 
