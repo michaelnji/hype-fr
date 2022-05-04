@@ -17,7 +17,7 @@ var client = contentful.createClient({
 // contentful blog posts
 
 // sends all blog posts to the client
-app.get("/welcome/blog", (req, res) => {
+app.get("/api/blog", (req, res) => {
   var blogPosts;
   client
     .getEntries()
@@ -38,7 +38,7 @@ app.get("/welcome/blog", (req, res) => {
 
 // gets a particular blog post
 
-app.get("/welcome/blog/:id", (request, response) => {
+app.get("/api/blog/:id", (request, response) => {
   let post;
   client
     .getEntry(request.params.id)
@@ -58,8 +58,9 @@ app.get("/welcome/blog/:id", (request, response) => {
     });
 });
 
-// serve assets, if they exist
-app.use(express.static("public"));
+// // serve assets, if they exist
+// app.use(express.static("public"));
+
 // otherwise serve Routify
 app.get("*", async (req, res) => {
   res.sendFile(TEMPLATE, { root: __dirname });
