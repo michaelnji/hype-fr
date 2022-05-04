@@ -1,8 +1,13 @@
 // const dotenv = require("dotenv").config();
 // Initialize Contentful client
-const contentful = require("contentful");
 
+const contentful = require("contentful");
 export default function fetchUser(req, res) {
+  var client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE,
+    accessToken: process.env.CONTENTFUL_API_KEY,
+  });
+
   var blogPosts;
   client
     .getEntries()
