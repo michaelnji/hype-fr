@@ -13,4 +13,5 @@ const template = fs.readFileSync(
 module.exports = async (req, res) => {
   const html = await tossr(template, script, req.url, {});
   res.send(html + "\n<!--ssr rendered-->");
+  // res.status??
 };
