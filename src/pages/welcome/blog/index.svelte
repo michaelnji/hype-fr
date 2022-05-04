@@ -19,7 +19,7 @@
       blogPosts = response.data;
     } catch (error) {
       console.error("error");
-      openModal("An error has occurred");
+      // openModal("An error has occurred");
     }
   }
   onMount(() => {
