@@ -14,12 +14,12 @@
   let currentTheme, subscribe, blogPosts;
   async function getBlogPosts(error) {
     try {
-      const returnValue = await fetch(`/welcome/blog`);
+      const returnValue = await fetch(`/api/blog`);
       const response = await returnValue.json();
       blogPosts = response.data;
     } catch (error) {
-      openModal("An error haas occurred");
       console.error("error");
+      openModal("An error has occurred");
     }
   }
   onMount(() => {

@@ -5,10 +5,10 @@ const TEMPLATE = "public/index.html";
 const PORT = 5000;
 const OPTIONS = { inlineDynamicImports: true };
 
-const contentful = require("contentful");
 const dotenv = require("dotenv").config();
 
 // Initialize Contentful client
+const contentful = require("contentful");
 var client = contentful.createClient({
   space: process.env.CONTENTFUL_SPACE,
   accessToken: process.env.CONTENTFUL_API_KEY,
@@ -17,7 +17,7 @@ var client = contentful.createClient({
 // contentful blog posts
 
 // sends all blog posts to the client
-app.get("/welcome/blog", (req, res) => {
+app.get("/api/blog", (req, res) => {
   var blogPosts;
   client
     .getEntries()
@@ -38,7 +38,7 @@ app.get("/welcome/blog", (req, res) => {
 
 // gets a particular blog post
 
-app.get("/welcome/blog/:id", (request, response) => {
+app.get("/api/blog/:id", (request, response) => {
   let post;
   client
     .getEntry(request.params.id)
@@ -58,17 +58,4 @@ app.get("/welcome/blog/:id", (request, response) => {
     });
 });
 
-// // serve assets, if they exist
-// app.use(express.static("public"));
-
-// // otherwise serve Routify
-// app.get("*", async (req, res) => {
-//   res.sendFile(TEMPLATE, { root: __dirname });
-// });
-
-// // start server
-// app.listen(PORT);
-// // console.log("serving on port", PORT);
-
-// Export the Express API
-module.exports = app;
+// module.exports = app;
