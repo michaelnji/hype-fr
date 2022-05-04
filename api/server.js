@@ -68,4 +68,7 @@ app.get("*", async (req, res) => {
 
 // start server
 app.listen(PORT);
-console.log("serving on port", PORT);
+// console.log("serving on port", PORT);
+
+// Export the Express API
+module.exports = app;
