@@ -14,7 +14,7 @@
   let currentTheme, subscribe, blogPosts;
   async function getBlogPosts(error) {
     try {
-      const returnValue = await fetch(`/api/blog.js`);
+      const returnValue = await fetch("/api/blog.js");
       const response = await returnValue.json();
       blogPosts = response.data;
     } catch (error) {
