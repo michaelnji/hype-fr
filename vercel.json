@@ -8,5 +8,28 @@
       "src": "api/blog/[id].js",
       "use": "@vercel/node"
     }
+  ],
+  "version": 2,
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "public/**"
+    }
+  },
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/api/blog/[id]",
+      "dest": "/api/blog/[id].js"
+    },
+    {
+      "src": "/api/blog",
+      "dest": "/api/blog.js"
+    }
   ]
 }

@@ -1,61 +1,16 @@
+const fs = require("fs");
 const { tossr } = require("tossr");
-const express = require("express");
-const app = express();
-const TEMPLATE = "public/index.html";
-const PORT = 5000;
-const OPTIONS = { inlineDynamicImports: true };
 
-const dotenv = require("dotenv").config();
+const script = fs.readFileSync(
+  require.resolve("../../public/build/bundle.js"),
+  "utf8"
+);
+const template = fs.readFileSync(
+  require.resolve("../../public/index.html"),
+  "utf8"
+);
 
-// Initialize Contentful client
-const contentful = require("contentful");
-var client = contentful.createClient({
-  space: process.env.CONTENTFUL_SPACE,
-  accessToken: process.env.CONTENTFUL_API_KEY,
-});
-
-// contentful blog posts
-
-// sends all blog posts to the client
-app.get("/api/blog", (req, res) => {
-  var blogPosts;
-  client
-    .getEntries()
-    .then(function (entries) {
-      res.send({
-        success: true,
-        data: entries,
-      });
-    })
-    .catch(function (error) {
-      response.send({
-        success: false,
-        data: undefined,
-      });
-      console.log("Error occurred : ", error);
-    });
-});
-
-// gets a particular blog post
-
-app.get("/api/blog/:id", (request, response) => {
-  let post;
-  client
-    .getEntry(request.params.id)
-    .then((entry) => {
-      post = entry;
-      response.send({
-        success: true,
-        data: post,
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-      response.send({
-        success: false,
-        data: {},
-      });
-    });
-});
-
-// module.exports = app;
+module.exports = async (req, res) => {
+  const html = await tossr(template, script, req.url, {});
+  res.send(html + "\n<!--ssr rendered-->");
+};
