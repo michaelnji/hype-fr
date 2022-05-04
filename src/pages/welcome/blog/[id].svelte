@@ -18,7 +18,7 @@
     subscribe = theme.subscribe((value) => {
       currentTheme = value;
     });
-    fetch(`/api/blog/?id=${$params.id}`)
+    fetch(`/api/blog/?id=${$params.id}.js`)
       .then((response) => {
         const r = response.json();
         r.then((c) => {
