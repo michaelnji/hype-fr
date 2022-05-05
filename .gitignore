@@ -7,6 +7,8 @@
 
 sw.js
 
+**/.history
+src/tmp/
 .routify
-
+.netlify
 .vercel
