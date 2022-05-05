@@ -9,7 +9,7 @@
   import Icon from "./../../../_components/icon.svelte";
   import Footer from "./../_components/footer.svelte";
   import Navbar from "./../_components/navbar.svelte";
-  import { Circle3 } from "svelte-loading-spinners";
+  import { Circle } from "svelte-loading-spinners";
   let currentTheme, subscribe, d;
   onMount(() => {
     theme.update((value) => {
@@ -296,6 +296,6 @@
   </div>
 {:else}
   <div class="grid place-items-center min-h-screen min-w-screen" in:fade>
-    <Circle3 size="60" color="#845ef7" unit="px" duration="1s" />
+    <Circle size="60" color="#845ef7" unit="px" duration="1s" />
   </div>
 {/if}

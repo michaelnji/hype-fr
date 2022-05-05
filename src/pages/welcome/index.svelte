@@ -1,4 +1,5 @@
 <script>
+  import NotificationComp from "./../../_components/notificationComp.svelte";
   import Icon from "./../../_components/icon.svelte";
   import Navbar from "./_components/navbar.svelte";
   import Hero from "./_components/hero.svelte";
@@ -6,10 +7,12 @@
   import { onDestroy, onMount } from "svelte";
   import db from "./../../scripts/dbManager";
   import { isActive } from "@roxi/routify";
-  // import { openModal } from "renderless-svelte";
-  // openModal("Rabbit 🐇");
+  import { notifications } from "renderless-svelte";
+
   let currentTheme, subscribe;
+
   onMount(() => {
+    // get current color theme
     theme.update((value) => {
       return db.getItemValue("App-theme", "light");
     });
@@ -21,6 +24,7 @@
     subscribe;
   });
 
+  // sets theme to either 'light' or 'dark'
   function changeTheme() {
     if (db.getItemValue("App-theme") == "light") {
       db.setItemValue("App-theme", "dark");

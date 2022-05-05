@@ -9,7 +9,7 @@
   import { onDestroy, onMount } from "svelte";
   import db from "./../../../scripts/dbManager";
   import { isActive, goto } from "@roxi/routify";
-  import { Circle3 } from "svelte-loading-spinners";
+  import { Circle } from "svelte-loading-spinners";
   import { fly, fade } from "svelte/transition";
   import { openModal, notifications } from "renderless-svelte";
   let currentTheme, subscribe, blogPosts;
@@ -18,7 +18,6 @@
       const returnValue = await fetch("/api/blog.js");
       const response = await returnValue.json();
       blogPosts = response.data;
-      notifications.push("Blog loaded successfully");
     } catch (error) {
       openModal(
         `We are sorry!😫😫 
@@ -100,7 +99,7 @@
           {/if}
         {:else}
           <div class="grid place-items-center min-h-[23rem]" in:fade>
-            <Circle3 size="60" color="#845ef7" unit="px" duration="1s" />
+            <Circle size="60" color="#845ef7" unit="px" duration="1s" />
           </div>
         {/if}
       </div>
