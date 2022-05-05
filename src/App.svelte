@@ -4,7 +4,7 @@
   import ServiceWorker from "./Serviceworker.svelte";
 </script>
 
-<!-- <ServiceWorker /> -->
+<ServiceWorker />
 
 <Router {routes} />
 
