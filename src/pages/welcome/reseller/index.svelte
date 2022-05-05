@@ -7,7 +7,7 @@
   import db from "./../../../scripts/dbManager";
   import { isActive } from "@roxi/routify";
   import { notifications } from "renderless-svelte";
-  import heroImg from "../../../Assets/Images/Isometric Clay Social Icons/Instagram_Box_Filled Clay R.png";
+  import heroImg from "../../../Assets/Images/Smash Illustrations/Advertise.svg";
   let currentTheme, subscribe;
 
   onMount(() => {
