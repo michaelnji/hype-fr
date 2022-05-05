@@ -1,25 +1,19 @@
 <script>
-  import BoostCard from "./_components/boostCard.svelte";
-  import BoostGroup from "./_components/boostGroup.svelte";
-  import BoostTags from "./_components/boostTags.svelte";
-  // @ts-nocheck
-
   import Footer from "./../_components/footer.svelte";
   import Icon from "./../../../_components/icon.svelte";
   import Navbar from "./../_components/navbar.svelte";
   import theme from "./../../../store/theme";
   import { onDestroy, onMount } from "svelte";
   import db from "./../../../scripts/dbManager";
-  import { isActive, goto } from "@roxi/routify";
-  import { fly, fade } from "svelte/transition";
-  import { openModal } from "renderless-svelte";
+  import { isActive } from "@roxi/routify";
+  import { notifications } from "renderless-svelte";
+  import heroImg from "../../../Assets/Images/Isometric Clay Social Icons/Instagram_Box_Filled Clay R.png";
   let currentTheme, subscribe;
+
   onMount(() => {
-    setTimeout(() => {
-      openModal("Click a boost to see it's sub services😎");
-    }, 1000);
+    // get current color theme
     theme.update((value) => {
-      return db.getItemValue("App-theme");
+      return db.getItemValue("App-theme", "light");
     });
     subscribe = theme.subscribe((value) => {
       currentTheme = value;
@@ -29,30 +23,20 @@
     subscribe;
   });
 
+  // sets theme to either 'light' or 'dark'
   function changeTheme() {
     if (db.getItemValue("App-theme") == "light") {
       db.setItemValue("App-theme", "dark");
       theme.update((value) => {
-        notifications.push("Theme changed to dark");
         return "dark";
       });
     } else {
       db.setItemValue("App-theme", "light");
       theme.update((value) => {
-        notifications.push("Theme changed to light");
         return "light";
       });
     }
   }
-  // let category = [
-  //   "all",
-  //   "expensive",
-  //   "cheap",
-  //   "fastest",
-  //   "real only",
-  //   "bots only",
-  //   "mixed",
-  // ];
 </script>
 
 <div class="drawer duration-150">
@@ -61,194 +45,39 @@
     <!-- Navbar -->
     <Navbar />
     <!-- Page content here -->
-    <div class="z-10 mt-24 px-8" in:fly={{ y: 100 }}>
-      <h1 class="text-6xl font-bold text-center font-serif mb-8">All Boosts</h1>
-      <!-- <div class="w-full flex flex-wrap gap-4 justify-center">
-        {#each category as c}
-          <span
-            class="badge badge-lg capitalize hover:badge-secondary cursor-pointer font-semibold"
-            >{c}</span
-          >
-        {/each}
-      </div> -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
-        <BoostCard
-          name="facebook"
-          description="Get Likes/reactions, followers on page/profile, friend requests & much more"
-          serviceType="mixed"
-          speed="10k/day"
-          maxOrders="100k"
-          tags={[
-            {
-              name: "popular",
-              type: "success",
-            },
-            {
-              name: "fast",
-              type: "success",
-            },
-            {
-              name: "cheap",
-              type: "",
-            },
-          ]}
-        />
-        <BoostCard
-          name="instagram"
-          description="Get hearts on posts, followers on page/profile, igTV/story views & much more"
-          serviceType="mixed"
-          speed="10k/day"
-          maxOrders="1m"
-          tags={[
-            {
-              name: "popular",
-              type: "success",
-            },
-            {
-              name: "fast",
-              type: "success",
-            },
-            {
-              name: "cheap",
-              type: "",
-            },
-          ]}
-        />
-        <BoostCard
-          name="youtube"
-          description="Get video views, watchtime, subscribers, & much more"
-          serviceType="mixed"
-          speed="10k/day"
-          maxOrders="1m"
-          tags={[
-            {
-              name: "popular",
-              type: "success",
-            },
-            {
-              name: "expensive",
-              type: "error",
-            },
-          ]}
-        />
-        <BoostCard
-          name="twitter"
-          description="Get followers, tweet likes, DMs & much more"
-          serviceType="mixed"
-          speed="3k/day"
-          maxOrders="500k"
-          tags={[
-            {
-              name: "expensive",
-              type: "error",
-            },
-          ]}
-        />
-        <BoostCard
-          name="tiktok"
-          description="Get followers,hearts on videos & much more"
-          serviceType="mixed"
-          speed="300k/day"
-          maxOrders="50m"
-          tags={[
-            {
-              name: "cheap",
-              type: "",
-            },
-            {
-              name: "popular",
-              type: "success",
-            },
-            {
-              name: "fast",
-              type: "success",
-            },
-          ]}
-        />
-        <BoostCard
-          name="telegram"
-          description="Get subscribers,views, group members & much more"
-          serviceType="mixed"
-          speed="300k/day"
-          maxOrders="50m"
-          tags={[
-            {
-              name: "cheap",
-              type: "",
-            },
-            {
-              name: "popular",
-              type: "success",
-            },
-            {
-              name: "fast",
-              type: "success",
-            },
-          ]}
-        />
-        <BoostCard
-          name="spotify"
-          description="Get subscribers,views, streams & much more"
-          serviceType="mixed"
-          speed="300k/day"
-          maxOrders="50m"
-          tags={[
-            {
-              name: "popular",
-              type: "success",
-            },
-          ]}
-        />
-        <BoostCard
-          name="sound cloud"
-          description="Get subscribers,views, streams & much more"
-          serviceType="mixed"
-          speed="300k/day"
-          maxOrders="50m"
-          tags={[
-            {
-              name: "popular",
-              type: "success",
-            },
-          ]}
-        />
-        <BoostCard
-          name="audiomack"
-          description="Get subscribers,views, streams & much more"
-          serviceType="mixed"
-          speed="300k/day"
-          maxOrders="50m"
-          tags={[
-            {
-              name: "popular",
-              type: "success",
-            },
-          ]}
-        />
-        <BoostCard
-          name="website traffic"
-          description="Get website traffic"
-          serviceType="mixed"
-          speed="300k/day"
-          maxOrders="50m"
-          tags={[
-            {
-              name: "popular",
-              type: "success",
-            },
-            {
-              name: "cheap",
-              type: "success",
-            },
-            {
-              name: "fast",
-              type: "success",
-            },
-          ]}
-        />
+    <div class="z-10 mt-20">
+      <div class="hero min-h-screen">
+        <div
+          class="hero-content flex-col lg:flex-row-reverse lg:items-start items-center"
+        >
+          <img
+            src={heroImg}
+            alt="Social media icons illustration"
+            class="lg:max-w-lg max-w-[80%]"
+          />
+          <div class="font-sans lg:max-w-1/2 w-full">
+            <h1
+              class="lg:text-7xl text-5xl font-extrabold font-serif mt-0 text-center lg:text-left"
+            >
+              Coming <span class="text-error"> Soon.... </span>
+            </h1>
+            <p class="py-6 lg:text-2xl text-xl text-center lg:text-left">
+              Sell our services at discounted prices and make money online. Make
+              use of coupons to get our boosts/services at discounted prices.
+            </p>
+            <p class="py-6 lg:text-2xl text-xl text-center lg:text-left">
+              This feature is still in development...
+            </p>
+            <button
+              disabled
+              class="btn sm:btn-lg lg:btn-wide btn-error font-bold shadow-md btn-disabled  mx-auto lg:mx-0 w-full"
+              >Get Started</button
+            >
+          </div>
+        </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </div>
   <div class="drawer-side">
     <label for="my-drawer-3" class="drawer-overlay" />
@@ -263,7 +92,6 @@
         >
       </h2>
       <!-- Sidebar content here -->
-
       <li
         class:bg-neutral={$isActive("/welcome/index", {}, true)}
         class:bg-opacity-70={$isActive("/welcome/index", {}, true)}

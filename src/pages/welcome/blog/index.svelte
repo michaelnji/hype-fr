@@ -170,7 +170,7 @@
               class="mx-2 rounded-box"
             >
               <a
-                href="/welcome/coupons"
+                href="/welcome/reseller"
                 class=" font-semibold capitalize  flex items-center gap-x-4"
                 ><span class="p-2 rounded-box bg-base-100"
                   ><Icon name="tag" config="h-4 w-4" /></span

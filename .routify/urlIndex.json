@@ -5,5 +5,7 @@
   "/welcome/contact/index",
   "/welcome/index",
   "/welcome/login/index",
+  "/welcome/plans/index",
+  "/welcome/reseller/index",
   "/welcome/signup/index"
 ]

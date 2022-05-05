@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "sirv public --no-clear",
+    "start": "sirv public --host",
     "dev": "run-p dev:*",
     "dev:routify": "routify",
     "dev:rollup": "rollup -c -w",
