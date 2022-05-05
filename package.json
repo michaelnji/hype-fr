@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "sirv public --no-clear",
-    "dev": "run-p dev:* nodemon",
+    "dev": "run-p dev:*",
     "dev:routify": "routify",
     "dev:rollup": "rollup -c -w",
     "nodemon": "nodemon server.js",

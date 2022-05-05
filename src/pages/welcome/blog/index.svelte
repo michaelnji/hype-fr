@@ -11,15 +11,25 @@
   import { isActive, goto } from "@roxi/routify";
   import { Circle3 } from "svelte-loading-spinners";
   import { fly, fade } from "svelte/transition";
+  import { openModal, notifications } from "renderless-svelte";
   let currentTheme, subscribe, blogPosts;
   async function getBlogPosts(error) {
     try {
       const returnValue = await fetch("/api/blog.js");
       const response = await returnValue.json();
       blogPosts = response.data;
+      notifications.push("Blog loaded successfully");
     } catch (error) {
-      console.error("error");
-      // openModal("An error has occurred");
+      openModal(
+        `We are sorry!😫😫 
+        An error has occurred, taking you back to homepage`
+      )
+        .then(() => {
+          $goto("/welcome");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   }
   onMount(() => {
@@ -39,11 +49,13 @@
     if (db.getItemValue("App-theme") == "light") {
       db.setItemValue("App-theme", "dark");
       theme.update((value) => {
+        notifications.push("Theme changed to dark");
         return "dark";
       });
     } else {
       db.setItemValue("App-theme", "light");
       theme.update((value) => {
+        notifications.push("Theme changed to light");
         return "light";
       });
     }
