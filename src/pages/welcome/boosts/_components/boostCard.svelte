@@ -1,12 +1,12 @@
 <script>
-  export let name, description, type, speed, maxOrders, tags;
+  export let name, description, serviceType, speed, maxOrders, tags;
 </script>
 
 <div
   class="p-4 rounded-box border border-neutral shadow-xl bg-base-100 lg:hover:scale-105 transform transition-transform  hover:shadow-2xl border-transparent ease-in-out w-full"
 >
   <div class="flex items-center justify-between mb-4">
-    <p class="font-bold  capitalize text-4xl">
+    <p class="font-bold capitalize text-3xl">
       {name}
       {#if tags.length > 2}
         {#each tags as tag, i}
@@ -37,7 +37,7 @@
     </div>
     <div class="flex flex-col">
       <b class="text-primary">Type</b>
-      <p>{type}</p>
+      <p>{serviceType}</p>
     </div>
     <div class="flex flex-col">
       <b class="text-primary">Speed</b>
@@ -45,6 +45,6 @@
     </div>
   </div>
   <div class="flex justify-center mt-8 place-items-center">
-    <button class="btn w-full">buy boost</button>
+    <button class="btn w-full">buy boosts</button>
   </div>
 </div>

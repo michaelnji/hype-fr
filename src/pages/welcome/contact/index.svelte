@@ -1,4 +1,5 @@
 <script>
+  import { fly } from "svelte/transition";
   import Footer from "./../_components/footer.svelte";
   import Icon from "./../../../_components/icon.svelte";
   import Navbar from "./../_components/navbar.svelte";
@@ -40,7 +41,7 @@
     <!-- Navbar -->
     <Navbar />
     <!-- Page content here -->
-    <div class="z-10 mt-20">
+    <div class="z-10 mt-20" in:fly={{ y: 100 }}>
       <div class="hero">
         <div
           class=" flex flex-col lg:flex-row-reverse items-center justify-center max-w-full  p-4 bg-base-200"

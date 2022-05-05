@@ -36,6 +36,6 @@
 <!-- show animation if page is loading -->
 {#if $isChangingPage}
   <div class="grid place-items-center min-h-screen min-w-screen" in:fade>
-    <Circle size="60" color="#845ef7" unit="px" duration="1s" />
+    <Circle size="60" color="#f79256" unit="px" duration="1s" />
   </div>
 {/if}

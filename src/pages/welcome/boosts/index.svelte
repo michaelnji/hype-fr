@@ -1,7 +1,9 @@
 <script>
+  import BoostCard from "./_components/boostCard.svelte";
+  import BoostGroup from "./_components/boostGroup.svelte";
+  import BoostTags from "./_components/boostTags.svelte";
   // @ts-nocheck
 
-  import BlogCard from "./_components/blogCard.svelte";
   import Footer from "./../_components/footer.svelte";
   import Icon from "./../../../_components/icon.svelte";
   import Navbar from "./../_components/navbar.svelte";
@@ -9,36 +11,19 @@
   import { onDestroy, onMount } from "svelte";
   import db from "./../../../scripts/dbManager";
   import { isActive, goto } from "@roxi/routify";
-  import { Circle } from "svelte-loading-spinners";
   import { fly, fade } from "svelte/transition";
-  import { openModal, notifications } from "renderless-svelte";
-  let currentTheme, subscribe, blogPosts;
-  async function getBlogPosts(error) {
-    try {
-      const returnValue = await fetch("/api/blog.js");
-      const response = await returnValue.json();
-      blogPosts = response.data;
-    } catch (error) {
-      openModal(
-        `We are sorry!😫😫 
-        An error has occurred, taking you back to homepage`
-      )
-        .then(() => {
-          $goto("/welcome");
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-  }
+  import { openModal } from "renderless-svelte";
+  let currentTheme, subscribe;
   onMount(() => {
+    setTimeout(() => {
+      openModal("Click a boost to see it's sub services😎");
+    }, 1000);
     theme.update((value) => {
       return db.getItemValue("App-theme");
     });
     subscribe = theme.subscribe((value) => {
       currentTheme = value;
     });
-    getBlogPosts();
   });
   onDestroy(() => {
     subscribe;
@@ -59,6 +44,15 @@
       });
     }
   }
+  // let category = [
+  //   "all",
+  //   "expensive",
+  //   "cheap",
+  //   "fastest",
+  //   "real only",
+  //   "bots only",
+  //   "mixed",
+  // ];
 </script>
 
 <div class="drawer duration-150">
@@ -67,41 +61,191 @@
     <!-- Navbar -->
     <Navbar />
     <!-- Page content here -->
-    <div class="z-10 mt-20" in:fly={{ y: 100 }}>
-      <div>
-        <!-- blog -->
-        <h1
-          class="md:text-7xl text-5xl font-extrabold capitalize text-center font-serif"
-        >
-          Our blog
-        </h1>
-        <p class="lg:text-2xl text-lg text-center">Articles to help you</p>
-        {#if blogPosts}
-          {#if blogPosts == []}
-            Nothing to show
-          {:else}
-            <div
-              in:fade
-              class="mt-12 grid place-items-center grid-cols-1 gap-3 md::grid-cols-2 lg:grid-cols-3"
-            >
-              <!-- else content here -->
-              {#each blogPosts.items as item}
-                <BlogCard
-                  imgUrl={"https:" + item.fields.mainImage.fields.file.url}
-                  author={item.fields.author}
-                  title={item.fields.title}
-                  date={item.fields.dateCreated}
-                  excerpt={item.fields.excerpt}
-                  id={item.sys.id}
-                />
-              {/each}
-            </div>
-          {/if}
-        {:else}
-          <div class="grid place-items-center min-h-[23rem]" in:fade>
-            <Circle size="60" color="#f79256" unit="px" duration="1s" />
-          </div>
-        {/if}
+    <div class="z-10 mt-24 px-8" in:fly={{ y: 100 }}>
+      <h1 class="text-6xl font-bold text-center font-serif mb-8">All Boosts</h1>
+      <!-- <div class="w-full flex flex-wrap gap-4 justify-center">
+        {#each category as c}
+          <span
+            class="badge badge-lg capitalize hover:badge-secondary cursor-pointer font-semibold"
+            >{c}</span
+          >
+        {/each}
+      </div> -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+        <BoostCard
+          name="facebook"
+          description="Get Likes/reactions, followers on page/profile, friend requests & much more"
+          serviceType="mixed"
+          speed="10k/day"
+          maxOrders="100k"
+          tags={[
+            {
+              name: "popular",
+              type: "success",
+            },
+            {
+              name: "fast",
+              type: "success",
+            },
+            {
+              name: "cheap",
+              type: "",
+            },
+          ]}
+        />
+        <BoostCard
+          name="instagram"
+          description="Get hearts on posts, followers on page/profile, igTV/story views & much more"
+          serviceType="mixed"
+          speed="10k/day"
+          maxOrders="1m"
+          tags={[
+            {
+              name: "popular",
+              type: "success",
+            },
+            {
+              name: "fast",
+              type: "success",
+            },
+            {
+              name: "cheap",
+              type: "",
+            },
+          ]}
+        />
+        <BoostCard
+          name="youtube"
+          description="Get video views, watchtime, subscribers, & much more"
+          serviceType="mixed"
+          speed="10k/day"
+          maxOrders="1m"
+          tags={[
+            {
+              name: "popular",
+              type: "success",
+            },
+            {
+              name: "expensive",
+              type: "error",
+            },
+          ]}
+        />
+        <BoostCard
+          name="twitter"
+          description="Get followers, tweet likes, DMs & much more"
+          serviceType="mixed"
+          speed="3k/day"
+          maxOrders="500k"
+          tags={[
+            {
+              name: "expensive",
+              type: "error",
+            },
+          ]}
+        />
+        <BoostCard
+          name="tiktok"
+          description="Get followers,hearts on videos & much more"
+          serviceType="mixed"
+          speed="300k/day"
+          maxOrders="50m"
+          tags={[
+            {
+              name: "cheap",
+              type: "",
+            },
+            {
+              name: "popular",
+              type: "success",
+            },
+            {
+              name: "fast",
+              type: "success",
+            },
+          ]}
+        />
+        <BoostCard
+          name="telegram"
+          description="Get subscribers,views, group members & much more"
+          serviceType="mixed"
+          speed="300k/day"
+          maxOrders="50m"
+          tags={[
+            {
+              name: "cheap",
+              type: "",
+            },
+            {
+              name: "popular",
+              type: "success",
+            },
+            {
+              name: "fast",
+              type: "success",
+            },
+          ]}
+        />
+        <BoostCard
+          name="spotify"
+          description="Get subscribers,views, streams & much more"
+          serviceType="mixed"
+          speed="300k/day"
+          maxOrders="50m"
+          tags={[
+            {
+              name: "popular",
+              type: "success",
+            },
+          ]}
+        />
+        <BoostCard
+          name="sound cloud"
+          description="Get subscribers,views, streams & much more"
+          serviceType="mixed"
+          speed="300k/day"
+          maxOrders="50m"
+          tags={[
+            {
+              name: "popular",
+              type: "success",
+            },
+          ]}
+        />
+        <BoostCard
+          name="audiomack"
+          description="Get subscribers,views, streams & much more"
+          serviceType="mixed"
+          speed="300k/day"
+          maxOrders="50m"
+          tags={[
+            {
+              name: "popular",
+              type: "success",
+            },
+          ]}
+        />
+        <BoostCard
+          name="website traffic"
+          description="Get website traffic"
+          serviceType="mixed"
+          speed="300k/day"
+          maxOrders="50m"
+          tags={[
+            {
+              name: "popular",
+              type: "success",
+            },
+            {
+              name: "cheap",
+              type: "success",
+            },
+            {
+              name: "fast",
+              type: "success",
+            },
+          ]}
+        />
       </div>
     </div>
     <Footer />

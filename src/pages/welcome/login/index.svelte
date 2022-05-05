@@ -1,4 +1,5 @@
 <script>
+	import { fly } from "svelte/transition";
   import Icon from "./../../../_components/icon.svelte";
   let showPassword = false;
   let hideP = () => {
@@ -11,9 +12,10 @@
     holder.type = "text";
     showPassword = !showPassword;
   };
+  
 </script>
 
-<div class="hero">
+<div class="hero" in:fly={{ y: 100 }}>
   <div
     class=" flex flex-col lg:flex-row-reverse items-center justify-center max-w-full min-h-screen p-4 bg-base-200"
   >

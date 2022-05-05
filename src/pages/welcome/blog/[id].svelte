@@ -2,7 +2,7 @@
   import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
   import { isActive, params } from "@roxi/routify";
   import { onDestroy, onMount } from "svelte";
-  import { fade } from "svelte/transition";
+  import { fly, fade } from "svelte/transition";
   import imgUrl from "./../../../Assets/Images/real images/payment-4334491_1920.jpg";
   import db from "./../../../scripts/dbManager";
   import theme from "./../../../store/theme";
@@ -52,13 +52,13 @@
 </script>
 
 {#if post}
-  <div class="drawer duration-150" in:fade>
+  <div class="drawer duration-150">
     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content flex flex-col">
       <!-- Navbar -->
       <Navbar />
       <!-- Page content here -->
-      <div class="z-10 mt-20 p-4">
+      <div class="z-10 mt-20 p-4" in:fly={{ y: 100 }}>
         <div
           class="flex flex-col lg:flex-row items-center justify-between gap-8"
         >
@@ -296,6 +296,6 @@
   </div>
 {:else}
   <div class="grid place-items-center min-h-screen min-w-screen" in:fade>
-    <Circle size="60" color="#845ef7" unit="px" duration="1s" />
+    <Circle size="60" color="#f79256" unit="px" duration="1s" />
   </div>
 {/if}

@@ -58,7 +58,7 @@ export default {
     progress({
       clearLine: true, // default: true
     }),
-    filesize(),
+    production && filesize(),
     // we'll extract any component CSS out into
     // a separate file - better for performance
     // css({ output: "bundle.css" }),
@@ -73,16 +73,18 @@ export default {
       dedupe: ["svelte"],
     }),
     commonjs(),
-    generateSW({
-      swDest: "public/sw.js",
-      globDirectory: "public/",
-      mode: production ? "production" : "development",
-    }),
-    injectManifest({
-      swSrc: "public/sw.js",
-      swDest: "public/sw.js",
-      globDirectory: "public/",
-    }),
+    production &&
+      generateSW({
+        swDest: "public/sw.js",
+        globDirectory: "public/",
+        mode: production ? "production" : "development",
+      }),
+    production &&
+      injectManifest({
+        swSrc: "public/sw.js",
+        swDest: "public/sw.js",
+        globDirectory: "public/",
+      }),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated

@@ -1,4 +1,5 @@
 <script>
+  import { fly } from "svelte/transition";
   import FaqCard from "./faqCard.svelte";
   import Footer from "./footer.svelte";
   import Icon from "./../../../_components/icon.svelte";
@@ -6,7 +7,7 @@
   import ProductCard from "./productCard.svelte";
 </script>
 
-<div class="sm:px-6 px-2">
+<div class="sm:px-6 px-2" in:fly={{ y: 100 }}>
   <div class="hero min-h-screen">
     <div class="hero-content flex-col lg:flex-row-reverse items-start">
       <img
@@ -42,7 +43,7 @@
         </div>
         <a
           href="/welcome/signup"
-          class="btn sm:btn-lg lg:btn-wide btn-primary font-bold shadow-md shadow-primary font-serif mx-auto lg:mx-0 w-full"
+          class="btn sm:btn-lg lg:btn-wide btn-primary font-bold shadow-md shadow-primary  mx-auto lg:mx-0 w-full"
           >Get Started</a
         >
       </div>
@@ -159,7 +160,9 @@
     <div
       class="flex flex-col md:flex-row gap-y-8 md:gap-0 p-4 rounded-box border border-neutral shadow-lg bg-base-100 !max-h-fit lg:max-w-2xl w-full mx-auto mt-24 md:items-center justify-between"
     >
-      <h2 class="md:text-4xl text-2xl font-serif font-extrabold">
+      <h2
+        class="md:text-4xl text-2xl font-serif font-extrabold text-center lg:text-left"
+      >
         Don't see what you need?
       </h2>
       <a href="/welcome/boosts" class="btn btn-primary lg:btn-lg md:btn-md"
@@ -201,7 +204,9 @@
             </div>
           </div>
           <div class="grid place-items-center lg:block">
-            <h1 class="text-5xl font-bold font-serif ">Grow with us</h1>
+            <h1 class="text-5xl font-bold font-serif text-center lg:text-left">
+              Grow with us
+            </h1>
             <p class="py-6 md:text-2xl text-center lg:text-left">
               Gain massive visibility online with our reliable social media
               marketing platform with no stress. <br /> Grow your social media accounts

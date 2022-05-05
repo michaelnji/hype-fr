@@ -4,8 +4,8 @@
 </script>
 
 <Modal let:payload let:close>
-  <div transition:fade class="modal  modal-open   modal-bottom sm:modal-middle">
-    <div class="modal-box" transition:fly={{ y: 100 }}>
+  <div in:fade class="modal  modal-open   modal-bottom sm:modal-middle">
+    <div class="modal-box" in:fly={{ y: 100 }}>
       <h3 class="font-bold text-lg">Heads up!</h3>
       <p class="py-4">
         {payload}

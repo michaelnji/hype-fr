@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.18.5
- * File generated Thu May 05 2022 11:49:29 GMT+0100 (heure normale d’Afrique de l’Ouest)
+ * File generated Thu May 05 2022 16:59:09 GMT+0100 (heure normale d’Afrique de l’Ouest)
  */
 
 export const __version = "2.18.5"
-export const __timestamp = "2022-05-05T10:49:29.733Z"
+export const __timestamp = "2022-05-05T15:59:09.526Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -159,6 +159,55 @@ export const _tree = {
             "prerender": true
           },
           "path": "/welcome/blog"
+        },
+        {
+          "isFile": false,
+          "isDir": true,
+          "file": "boosts",
+          "filepath": "/welcome/boosts",
+          "name": "boosts",
+          "ext": "",
+          "badExt": false,
+          "absolutePath": "C:/Users/Michael/Desktop/hype-fr/src/pages/welcome/boosts",
+          "children": [
+            {
+              "isFile": true,
+              "isDir": false,
+              "file": "index.svelte",
+              "filepath": "/welcome/boosts/index.svelte",
+              "name": "index",
+              "ext": "svelte",
+              "badExt": false,
+              "absolutePath": "C:/Users/Michael/Desktop/hype-fr/src/pages/welcome/boosts/index.svelte",
+              "importPath": "../src/pages/welcome/boosts/index.svelte",
+              "isLayout": false,
+              "isReset": false,
+              "isIndex": true,
+              "isFallback": false,
+              "isPage": true,
+              "ownMeta": {},
+              "meta": {
+                "recursive": true,
+                "preload": "proximity",
+                "prerender": true
+              },
+              "path": "/welcome/boosts/index",
+              "id": "_welcome_boosts_index",
+              "component": () => import('../src/pages/welcome/boosts/index.svelte').then(m => m.default)
+            }
+          ],
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": false,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/welcome/boosts"
         },
         {
           "isFile": false,

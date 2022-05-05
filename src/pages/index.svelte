@@ -22,7 +22,7 @@
 
 <div class="grid place-items-center min-h-screen min-w-screen">
   <div>
-    <Circle size="60" unit="px" color="#845ef7" duration="1s" />
+    <Circle size="60" unit="px" color="#f79256" duration="1s" />
     <div class="mt-3 text-2xl font-cursive font-semibold">loading</div>
   </div>
 </div>

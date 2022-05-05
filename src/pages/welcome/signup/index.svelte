@@ -1,4 +1,5 @@
 <script>
+  import { fly } from "svelte/transition";
   import Footer from "./../_components/footer.svelte";
   import Icon from "./../../../_components/icon.svelte";
   import Navbar from "./../_components/navbar.svelte";
@@ -34,7 +35,7 @@
   }
 </script>
 
-<div class="grid place-items-center py-4 !overflow-hidden">
+<div class="grid place-items-center py-4 !overflow-hidden" in:fly={{ y: 100 }}>
   <div
     class=" flex flex-col lg:flex-row-reverse items-center justify-center   p-4 bg-base-200"
   >
